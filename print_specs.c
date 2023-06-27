@@ -32,11 +32,8 @@ int print_string(va_list args, flags_t *format)
 	unsigned int i = 0, b = 0, x = 0, y;
 
 	(void)format;
-	switch ((int)(!str))
-		case 1:
-			str = NULL_STRING;
-
-	y = i = strlen(str);
+	if (!str)
+		str = NULL_STRING;
 	if (format->precision < i)
 		y = i = format->precision;
 
@@ -48,7 +45,7 @@ int print_string(va_list args, flags_t *format)
 		else
 			b += puts(str);
 	}
-	while (y++ < format->width)
+	while (y < format->width)
 		b += putchar(c);
 	if (!format->minus_flag)
 	{
