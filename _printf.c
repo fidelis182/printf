@@ -21,8 +21,6 @@ int _printf(const char *format, ...)
 		return (-1);
 	for (p = (char *)format; *p; p++)
 	{
-		init_params(&params, aps);
-
 		if (*p != '%')
 		{
 			b += _putchar(*p);
@@ -30,19 +28,6 @@ int _printf(const char *format, ...)
 		}
 		start = p;
 		p++;
-		while (get_flag(p, &params))
-		{
-			p++;
-		}
-		p = get_width(p, &params, args);
-		p = check_precision(p, &params, args);
-		if (get_modifier(p, &params))
-			p++;
-		if (!check_specifier(p))
-			b += print_from_to(start, p,
-				params.l_modifier || params.h_modifier ? p - 1 : 0);
-		else
-			b += get_print_func(p, args, &params);
 	}
 	_putchar(BUF_FLUSH);
 	va_end(args);
