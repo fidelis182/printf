@@ -63,7 +63,8 @@ int print_prcent(va_list args, flags_t *format);
 
 int power_of_ten(int n);
 int (*check_specifier(char *s))(va_list args, flags_t *format);
-char (*get_precision(char *p))(flags_t *format, va_list args);
+char *check_precision(char *p, flags_t *params, va_list args);
+int _isdigit(int a);
 
 /**
  * struct conversion_specifier - Structure struct

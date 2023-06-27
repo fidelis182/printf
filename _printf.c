@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 	int b = 0;
 	va_list args;
 	char *p;
+	flags_t params;
 
 	va_start(args, format);
 
@@ -25,6 +26,12 @@ int _printf(const char *format, ...)
 			b += putchar(*p);
 			continue;
 		}
+		else
+			p++;
+		if (*p == '%')
+			b += putchar('%');
+		p = check_precision(p, &params, args);
+
 	}
 	putchar(BUF_FLUSH);
 	va_end(args);
