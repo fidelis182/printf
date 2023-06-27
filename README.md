@@ -9,4 +9,4 @@ gcc -Wall -Wextra -pedantic -std=gnu89 main.c _printf.c functions.c -o a
 ./a
 ```
 ## Authors
- [Destiny](https://github.com/Destiny-Kay) and [Gift](https://github.com/1Gift3)
+ [Destiny](https://github.com/Destiny-Kay) and [Gift](https://github.com/fidelis182)
