@@ -4,17 +4,17 @@
  * @c: the character to be printed
  * Return: number of bytes printed to the standard output
 */
-int print_char(va_list args, flags_t *format);
+int print_char(va_list args, flags_t *format)
 {
 	char c = ' ';
 	unsigned int i = 1, b = 0, ch = va_arg(args, int);
 
 	if (format->minus_flag)
-		b += _putchar(ch);
+		b += putchar(ch);
 	while (i++ < format->width)
-		b += _putchar(c);
+		b += putchar(c);
 	if (!format->minus_flag)
-		b += _putchar(ch);
+		b += putchar(ch);
 	return (b);
 }
 
@@ -33,48 +33,31 @@ int print_string(va_list args, flags_t *format)
 		case 1:
 			str = NULL_STRING;
 
-	j = i = _strlen(str);
+	y = i = strlen(str);
 	if (format->precision < i)
-		j = i = format->precision;
+		y = i = format->precision;
 
 	if (format->minus_flag)
 	{
 		if (format->precision != UINT_MAX)
 			for (x = 0; x < i; x++)
-				b += _putchar(*str++);
+				b += putchar(*str++);
 		else
-			b += _puts(str);
+			b += puts(str);
 	}
 	while (y++ < format->width)
-		b += _putchar(c);
+		b += putchar(c);
 	if (!format->minus_flag)
 	{
 		if (format->precision != UINT_MAX)
 			for (x = 0; x < i; x++)
-				b += _putchar(*str++);
+				b += putchar(*str++);
 		else
-			b += _puts(str);
+			b += puts(str);
 	}
 	return (b);
 }
 
-/**
- * print_int- prints an integer to the standard output
- * @a: the integer to be printed
- * Return: number of bytes printed to the standard output
-*/
-int print_int(va_list args, flags_t *format)
-{
-	long i;
-
-	if (format->i_modifier)
-		i = va_arg(args, long);
-	else if (format->h_modifier)
-		i = (short int)va_arg(args, int);
-	else
-		i = (int)va_arg(args, int);
-	return (print_number(convert(i, 10, 0, format), format));
-}
 /**
  * print_percent - prints stringto percentage
  * @aps: argument pointer
@@ -85,6 +68,6 @@ int print_prcent(va_list args, flags_t *format)
 {
 	(void)args;
 	(void)format;
-	return (_putchar('%'));
+	return (putchar('%'));
 }
 

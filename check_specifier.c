@@ -8,26 +8,15 @@ int (*check_specifier(char *s))(va_list args, flags_t *format)
 {
 	func_t specifiers[] = {
 		{"c", print_char},
-		{"d", print_int},
-		{"i", print_int},
 		{"s", print_string},
 		{"%", print_prcent},
-		{"b", print_binary},
-		{"o", print_octal},
-		{"u", print_unsigned},
-		{"x", print_hex},
-		{"X", print_HEX},
-		{"p", print_address},
-		{"S", print_S},
-		{"r", print_rev},
-		{"R", print_rot13},
 		{NULL, NULL}
 	};
 	int b = 0;
 
-	while (specifiers[b].specifier)
+	while (specifiers[b].symbol != NULL)
 	{
-		if (*s == specifiers[b].specifier[0])
+		if (*s == specifiers[b].symbol[0])
 		{
 			return (specifiers[b].f);
 		}

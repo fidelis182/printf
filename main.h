@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -58,8 +59,7 @@ int _printf(const char *format, ...);
 /* print_specs.c module */
 int print_char(va_list args, flags_t *format);
 int print_string(va_list args, flags_t *format);
-int Print_prcent(va_list args, flags_t *format);
-int print_int(va_list args, flags_t *format);
+int print_prcent(va_list args, flags_t *format);
 
 int power_of_ten(int n);
 int (*check_specifier(char *s))(va_list args, flags_t *format);
@@ -73,6 +73,6 @@ char (*get_precision(char *p))(flags_t *format, va_list args);
 typedef struct f_function
 {
 	char *symbol;
-	int (*f)(va_list);
+	int (*f)(va_list, flags_t *);
 }func_t;
 #endif

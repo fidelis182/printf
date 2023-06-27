@@ -10,8 +10,7 @@ int _printf(const char *format, ...)
 {
 	int b = 0;
 	va_list args;
-	char *p, *start;
-	flags_t params = PARAMS_INIT;
+	char *p;
 
 	va_start(args, format);
 
@@ -23,13 +22,11 @@ int _printf(const char *format, ...)
 	{
 		if (*p != '%')
 		{
-			b += _putchar(*p);
+			b += putchar(*p);
 			continue;
 		}
-		start = p;
-		p++;
 	}
-	_putchar(BUF_FLUSH);
+	putchar(BUF_FLUSH);
 	va_end(args);
 	return (b);
 }
