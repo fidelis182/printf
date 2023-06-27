@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
- * print_char- prints a character to the standard output
- * @c: the character to be printed
- * Return: number of bytes printed to the standard output
-*/
+ * print_char - prints character
+ * @args: argument parameter
+ * @format: the parameters
+ * Return: number characters to be printed
+ */
 int print_char(va_list args, flags_t *format)
 {
 	char c = ' ';
@@ -19,10 +21,11 @@ int print_char(va_list args, flags_t *format)
 }
 
 /**
- * print_string- prints a string of chars to the standard output
- * @c: the character string
- * Return: number of bytes printed out to the standard output
-*/
+ * print_string - prints string
+ * @args: argument parameter
+ * @format: the parameters
+ * Return: number characters to be printed
+ */
 int print_string(va_list args, flags_t *format)
 {
 	char *str = va_arg(args, char *), c = ' ';
@@ -59,10 +62,10 @@ int print_string(va_list args, flags_t *format)
 }
 
 /**
- * print_percent - prints stringto percentage
- * @aps: argument pointer
- * @params: the parameters
- * Return: chars
+ * print_prcent - prints the % sign
+ * @args: argument parameter
+ * @format: the parameters
+ * Return: number characters to be printed
  */
 int print_prcent(va_list args, flags_t *format)
 {
