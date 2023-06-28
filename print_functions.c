@@ -58,3 +58,35 @@ int print_string(va_list args)
 	_putchar('\0');
 	return (i);
 }
+/**
+ * print
+*/
+int print_decimal(va_list args)
+{
+	int digitCount = 1;
+	int temp;
+	int a = va_arg(args, int);
+
+	if (a < 0)
+	{
+		_putchar('-');
+		a = -a;
+	}
+	temp = a;
+	/*Getting the number of digits in the number a*/
+	while (temp >= 10)
+	{
+		temp /= 10;
+		digitCount++;
+	}
+	while (digitCount > 0)
+	{
+		int digit;
+
+		digit = a / power_of_ten(digitCount - 1);
+		_putchar('0' + digit);
+		a %= power_of_ten(digitCount - 1);
+		digitCount--;
+	}
+	return (0);
+}

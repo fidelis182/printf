@@ -24,7 +24,10 @@ int _putchar(char c);
 int print_char(va_list args);
 int print_prcnt(__attribute__((unused)) va_list args);
 int print_string(va_list args);
+int print_decimal(va_list args);
 int get_format_func(const char *format,
 format_t format_list[], va_list arg_list);
 
+/*Other functions*/
+int power_of_ten(int n);
 #endif

@@ -14,6 +14,8 @@ format_t list_format[] = {
 	{"c", print_char},
 	{"s", print_string},
 	{"%", print_prcnt},
+	{"d", print_decimal},
+	{"i", print_decimal},
 	{NULL, NULL}
 };
 
