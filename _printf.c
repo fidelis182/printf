@@ -1,39 +1,29 @@
 #include "main.h"
-
+#include <stdlib.h>
+#include <stdarg.h>
 /**
- * _printf- prints out strings according to a format
- * @format: the strings' format
- * Return: printed output
-*/
-
+ * _printf- produces output according to a format
+ * @format: the format to be output
+ * Return: the numbe rof chaacters printed
+ */
 int _printf(const char *format, ...)
 {
-	int b = 0;
-	va_list args;
-	char *p;
-	flags_t params;
+int chars_printed;
 
-	va_start(args, format);
+format_t list_format[] = {
+	{"c", print_char},
+	{"s", print_string},
+	{"%", print_prcnt},
+	{NULL, NULL}
+};
 
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	for (p = (char *)format; *p; p++)
+va_list args;
+	if (format == NULL)
 	{
-		if (*p != '%')
-		{
-			b += putchar(*p);
-			continue;
-		}
-		else
-			p++;
-		if (*p == '%')
-			b += putchar('%');
-		p = check_precision(p, &params, args);
-
+		return (-1);
 	}
-	putchar(BUF_FLUSH);
+	va_start(args, format);
+	chars_printed = get_format_func(format, list_format, args);
 	va_end(args);
-	return (b);
+	return (chars_printed);
 }
