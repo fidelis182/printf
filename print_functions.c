@@ -59,7 +59,9 @@ int print_string(va_list args)
 	return (i);
 }
 /**
- * print
+ * print_decimal- prints a decimal number to the standard output
+ * @args: argument variables from _printf invocation
+ * Return: 0 on success
 */
 int print_decimal(va_list args)
 {
@@ -88,5 +90,5 @@ int print_decimal(va_list args)
 		a %= power_of_ten(digitCount - 1);
 		digitCount--;
 	}
-	return (0);
+	return (digitCount);
 }
